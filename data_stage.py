@@ -63,51 +63,20 @@ msft_ticker = ticker_price_action("MSFT")
 o_ticker = ticker_price_action("O")
 
 # Export to CSV
-mcd_ticker.to_csv(pwd + "\\mcd_stocks.csv", mode ="w", header=True, index=False)
-pep_ticker.to_csv(pwd + "\\pep_stocks.csv", mode ="w", header=True, index=False)
-msft_ticker.to_csv(pwd + "\\msft_stocks.csv", mode ="w", header=True, index=False)
-o_ticker.to_csv(pwd + "\\o_stocks.csv", mode ="w", header=True, index=False)
+mcd_ticker.to_csv(pwd + "\\stocks.csv", mode ="w", header=True, index=False)
+pep_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
+msft_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
+o_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
 
 # Create CSV data frame the import into Streamlit
-mcd_df = pd.read_csv(pwd + "\\mcd_stocks.csv")
-pep_df = pd.read_csv(pwd + "\\pep_stocks.csv")
-msft_df = pd.read_csv(pwd + "\\msft_stocks.csv")
-o_df = pd.read_csv(pwd + "\\o_stocks.csv")
+mcd_df = pd.read_csv(pwd + "\\stocks.csv")
+mcd_df = mcd_df[mcd_df["Ticker"] == "MCD"]
 
+pep_df = pd.read_csv(pwd + "\\stocks.csv")
+pep_df = pep_df[pep_df["Ticker"] == "PEP"]
 
-# Run Streamlit
+msft_df = pd.read_csv(pwd + "\\stocks.csv")
+msft_df = msft_df[msft_df["Ticker"] == "MSFT"]
 
-# Streamlit conditional function
-def percent_variance(val):
-    color = "red" if val < 0 else "green" # if val > 0 else "green"
-    return f"background-color: {color}"
-
-
-st.set_page_config(layout="wide")
-st.title("Weekly DCA Assessment")
-
-st.subheader("McDonald's Corp")
-# st.write(mcd_df)
-st.dataframe(mcd_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
-
-st.subheader("PepsiCo, Inc.")
-# st.write(pep_df)
-st.dataframe(pep_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
-
-st.subheader("Microsoft Corp")
-# st.write(msft_df)
-st.dataframe(msft_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
-
-st.subheader("Realty Income Corp")
-# st.write(o_df)
-st.dataframe(o_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
-
-# add_sidebar = st.sidebar.selectbox("Test Side Bar Title", ("Test 1", "Test 2"))
+o_df = pd.read_csv(pwd + "\\stocks.csv")
+o_df = o_df[o_df["Ticker"] == "MSFT"]
