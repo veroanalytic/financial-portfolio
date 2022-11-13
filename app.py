@@ -58,7 +58,7 @@ mcd_price_action = mcd_history[["Ticker", "Close",
                                 "semi_annual_avg_close", "annual_avg_close", "two_year_avg_close"
                                 ]] \
                                 .sort_values(by=["Date"], ascending=False) \
-                                .head(1)
+                                .head(5)
 mcd_price_action = mcd_price_action.reset_index()
 
 # Export to CSV
@@ -116,7 +116,7 @@ pep_price_action = pep_history[["Ticker", "Close",
                                 "semi_annual_avg_close", "annual_avg_close", "two_year_avg_close"
                                 ]] \
                                 .sort_values(by=["Date"], ascending=False) \
-                                .head(1)
+                                .head(5)
 pep_price_action = pep_price_action.reset_index()
 
 
@@ -174,7 +174,7 @@ msft_price_action = msft_history[["Ticker", "Close",
                                 "semi_annual_avg_close", "annual_avg_close", "two_year_avg_close"
                                 ]] \
                                 .sort_values(by=["Date"], ascending=False) \
-                                .head(1)
+                                .head(5)
 msft_price_action = msft_price_action.reset_index()
 
 # Export to CSV
