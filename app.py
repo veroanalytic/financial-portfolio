@@ -70,9 +70,6 @@ def percent_variance(val):
     color = "red" if val < 0 else "green" # if val > 0 else "green"
     return f"background-color: {color}"
 
-
-
-
 # Run Streamlit
 st.set_page_config(layout="wide")
 st.title("Weekly DCA Assessment")
