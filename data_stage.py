@@ -75,12 +75,3 @@ mcd_df = df[df["Ticker"] == "MCD"]
 pep_df = df[df["Ticker"] == "PEP"]
 msft_df = df[df["Ticker"] == "MSFT"]
 o_df = df[df["Ticker"] == "O"]
-
-# pep_df = pd.read_csv(pwd + "\\stocks.csv")
-# pep_df = pep_df[pep_df["Ticker"] == "PEP"]
-
-# msft_df = pd.read_csv(pwd + "\\stocks.csv")
-# msft_df = msft_df[msft_df["Ticker"] == "MSFT"]
-
-# o_df = pd.read_csv(pwd + "\\stocks.csv")
-# o_df = o_df[o_df["Ticker"] == "O"]
