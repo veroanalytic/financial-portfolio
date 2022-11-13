@@ -78,6 +78,3 @@ st.subheader("Microsoft Corp")
 st.write(msft_df)
 
 # add_sidebar = st.sidebar.selectbox("Test Side Bar Title", ("Test 1", "Test 2"))
-
-# Run in Terminal Window
-# "streamlit run c:/Users/jisbe/pyproject/financial-portfolio/app.py"
