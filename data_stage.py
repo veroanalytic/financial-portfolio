@@ -69,14 +69,18 @@ msft_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
 
 # Create CSV data frame the import into Streamlit
-mcd_df = pd.read_csv(pwd + "\\stocks.csv")
-mcd_df = mcd_df[mcd_df["Ticker"] == "MCD"]
+df = pd.read_csv(pwd + "\\stocks.csv")
 
-pep_df = pd.read_csv(pwd + "\\stocks.csv")
-pep_df = pep_df[pep_df["Ticker"] == "PEP"]
+mcd_df = df[df["Ticker"] == "MCD"]
+pep_df = df[df["Ticker"] == "PEP"]
+msft_df = df[df["Ticker"] == "MSFT"]
+o_df = df[df["Ticker"] == "O"]
 
-msft_df = pd.read_csv(pwd + "\\stocks.csv")
-msft_df = msft_df[msft_df["Ticker"] == "MSFT"]
+# pep_df = pd.read_csv(pwd + "\\stocks.csv")
+# pep_df = pep_df[pep_df["Ticker"] == "PEP"]
 
-o_df = pd.read_csv(pwd + "\\stocks.csv")
-o_df = o_df[o_df["Ticker"] == "MSFT"]
+# msft_df = pd.read_csv(pwd + "\\stocks.csv")
+# msft_df = msft_df[msft_df["Ticker"] == "MSFT"]
+
+# o_df = pd.read_csv(pwd + "\\stocks.csv")
+# o_df = o_df[o_df["Ticker"] == "O"]
