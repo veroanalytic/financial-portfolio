@@ -1,8 +1,6 @@
 # Import Libraries
-import pandas as pd
 import yfinance as yf
 import streamlit as st
-from time import sleep
 
 def ticker_history(ticker_symbol):
 

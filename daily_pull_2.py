@@ -1,11 +1,8 @@
 import pandas as pd
 import yfinance as yf
-import streamlit as st
-import os
 import datetime
 from pandas.tseries.offsets import BDay
 
-pwd = os.getcwd()
 
 def ticker_info(): # ticker_symbol
 
