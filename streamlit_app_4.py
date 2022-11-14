@@ -12,10 +12,13 @@ def percent_variance(val):
 st.set_page_config(layout="wide")
 st.title("Weekly DCA Assessment")
 
+st.markdown("""---""")
+
 st.header("Daily Data:")
 # st.write(df_daily)
 st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Change"]))
 
+st.markdown("""---""")
 
 st.header("Historical Data:")
 st.subheader("McDonald's Corp")

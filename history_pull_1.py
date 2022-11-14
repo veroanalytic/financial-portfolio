@@ -17,7 +17,7 @@ def ticker_price_action(ticker_symbol):
     ticker_price_action = ticker_history(ticker_symbol)
 
     # Number of rows displayed
-    rows_returned = 5
+    rows_returned = 1
 
     # Create derived columns
     ticker_price_action["Ticker"] = ticker_symbol
