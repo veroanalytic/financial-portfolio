@@ -2,11 +2,7 @@
 import pandas as pd
 import yfinance as yf
 import streamlit as st
-import os
 from time import sleep
-
-pwd = os.getcwd()
-
 
 def ticker_history(ticker_symbol):
 
@@ -56,25 +52,3 @@ def ticker_price_action(ticker_symbol):
 
     return ticker_price_action
 
-# Assign function call to ticker
-mcd_ticker = ticker_price_action("MCD")
-pep_ticker = ticker_price_action("PEP")
-msft_ticker = ticker_price_action("MSFT")
-aapl_ticker = ticker_price_action("AAPL")
-o_ticker = ticker_price_action("O")
-
-# Export to CSV
-mcd_ticker.to_csv(pwd + "\\stocks.csv", mode ="w", header=True, index=False)
-pep_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
-msft_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
-aapl_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
-o_ticker.to_csv(pwd + "\\stocks.csv", mode ="a", header=False, index=False)
-
-# Create CSV data frame the import into Streamlit
-df = pd.read_csv(pwd + "\\stocks.csv")
-
-mcd_df = df[df["Ticker"] == "MCD"]
-pep_df = df[df["Ticker"] == "PEP"]
-msft_df = df[df["Ticker"] == "MSFT"]
-aapl_df = df[df["Ticker"] == "AAPL"]
-o_df = df[df["Ticker"] == "O"]

@@ -1,5 +1,5 @@
 import streamlit as st
-from data_stage import mcd_df, pep_df, msft_df, aapl_df, o_df
+from staging_data_3 import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily
 
 # Run Streamlit
 
@@ -12,6 +12,12 @@ def percent_variance(val):
 st.set_page_config(layout="wide")
 st.title("Weekly DCA Assessment")
 
+st.header("Daily Data:")
+# st.write(df_daily)
+st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Change"]))
+
+
+st.header("Historical Data:")
 st.subheader("McDonald's Corp")
 # st.write(mcd_df)
 st.dataframe(mcd_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
