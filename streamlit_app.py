@@ -1,5 +1,5 @@
 import streamlit as st
-from data_stage import mcd_df, pep_df, msft_df, o_df
+from data_stage import mcd_df, pep_df, msft_df, aapl_df, o_df
 
 # Run Streamlit
 
@@ -29,6 +29,12 @@ st.subheader("Microsoft Corp")
 st.dataframe(msft_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
                                                              ]))
+
+st.subheader("Apple Inc")
+# st.write(aapl_df)
+st.dataframe(aapl_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+                                                             ]))                                                             
 
 st.subheader("Realty Income Corp")
 # st.write(o_df)
