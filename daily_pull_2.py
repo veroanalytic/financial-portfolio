@@ -9,7 +9,7 @@ pwd = os.getcwd()
 
 def ticker_info(): # ticker_symbol
 
-    l = ["PEP", "MCD", "MSFT", "AAPL"]
+    l = ["MCD", "PEP", "MSFT", "AAPL", "O"]
 
     df_list = []
 
