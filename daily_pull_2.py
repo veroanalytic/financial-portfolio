@@ -48,7 +48,3 @@ def ticker_info(): # ticker_symbol
     ]]
 
     return df
-
-df = ticker_info()
-
-df
