@@ -1,6 +1,6 @@
 import pandas as pd
-from history_pull_1 import ticker_price_action
-from daily_pull_2 import ticker_info
+from history_data import ticker_price_action
+from daily_data import ticker_info
 import os
 
 pwd = os.getcwd()

@@ -1,11 +1,20 @@
 import streamlit as st
-from staging_data_3 import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily
+from staging_data import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily
 
 # Run Streamlit
 
 # Streamlit conditional function
 def percent_variance(val):
-    color = "red" if val < 0 else "green" # if val > 0 else "green"
+    if val < -10:
+        color = "red"
+    elif val < 0:
+        color = "#FF6A6A"
+    elif val > 10:
+        color = "#00CD00"
+    elif val > 0:
+        color = "#3CB371"
+
+    # color = "#FF6A6A" if val < 0 else "green" # if val > 0 else "green"
     return f"background-color: {color}"
 
 
@@ -16,7 +25,8 @@ st.markdown("""---""")
 
 st.header("Daily Data:")
 # st.write(df_daily)
-st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Change"]))
+st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Change", "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", 
+                                                               "Week_52_Low_Avg_%", "Week_52_High_Avg_%"]))
 
 st.markdown("""---""")
 
