@@ -1,5 +1,5 @@
 import streamlit as st
-from staging_data import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily, df_hist
+from staging_data import df_merged, df_hist #, mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily 
 
 # Run Streamlit
 
@@ -25,8 +25,9 @@ st.markdown("""---""")
 
 st.header("Daily Data:")
 # st.write(df_daily)
-st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Change", "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", 
-                                                               "Week_52_Low_Avg_%", "Week_52_High_Avg_%"]))
+st.dataframe(df_merged.style.applymap(percent_variance, subset=["Daily_Percent_Change", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+                                                                "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", 
+                                                                "Week_52_Low_Avg_%", "Week_52_High_Avg_%"]))
 
 st.markdown("""---""")
 

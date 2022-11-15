@@ -2,6 +2,7 @@ import pandas as pd
 from history_data import ticker_price_action
 from daily_data import ticker_info
 import os
+import glob
 
 pwd = os.getcwd()
 
@@ -30,10 +31,22 @@ daily_info.to_csv(pwd + "\\daily.csv", mode ="w", header=True, index=False)
 df_hist = pd.read_csv(pwd + "\\history.csv")
 df_daily = pd.read_csv(pwd + "\\daily.csv")
 
+df_merged = pd.concat([df_hist, df_daily], axis=1)
+
+df_merged = df_merged[[
+            "Current_Date", "symbol", 
+            "currentPrice", "Daily_Percent_Change",
+            "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+            "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", "Week_52_Low_Avg_%", "Week_52_High_Avg_%",
+            "Previous_Date", 
+            "previousClose", "Wkly_Avg_Close", "Monthly_Avg_Close", 
+            "fiftyDayAverage", "twoHundredDayAverage", 
+            "fiftyTwoWeekLow", "fiftyTwoWeekHigh"]]
+        
 # Separate CSV History data by Ticker
-mcd_df = df_hist[df_hist["Ticker"] == "MCD"]
-pep_df = df_hist[df_hist["Ticker"] == "PEP"]
-msft_df = df_hist[df_hist["Ticker"] == "MSFT"]
-aapl_df = df_hist[df_hist["Ticker"] == "AAPL"]
-o_df = df_hist[df_hist["Ticker"] == "O"]
+# mcd_df = df_hist[df_hist["Ticker"] == "MCD"]
+# pep_df = df_hist[df_hist["Ticker"] == "PEP"]
+# msft_df = df_hist[df_hist["Ticker"] == "MSFT"]
+# aapl_df = df_hist[df_hist["Ticker"] == "AAPL"]
+# o_df = df_hist[df_hist["Ticker"] == "O"]
 
