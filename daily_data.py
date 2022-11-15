@@ -15,8 +15,8 @@ def ticker_info(): # ticker_symbol
     
     df = pd.concat(df_list)
 
-    df["Current_Date"] = datetime.date.today() - BDay(0)
-    df["Previous_Date"] = datetime.date.today() - BDay(1)
+    df["Current_Date"] = datetime.datetime.today() - BDay(0)
+    df["Previous_Date"] = datetime.datetime.today() - BDay(1)
 
     # Create derived columns
     df["Daily_Percent_Change"] = (df["currentPrice"] - df["previousClose"]) / df["currentPrice"] * 100

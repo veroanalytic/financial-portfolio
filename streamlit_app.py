@@ -1,5 +1,48 @@
 import streamlit as st
-from staging_data import df_merged, df_hist #, mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily 
+# from staging_data import df_merged, df_hist #, mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily 
+import pandas as pd
+from history_data import ticker_price_action
+from daily_data import ticker_info
+import os
+
+pwd = os.getcwd()
+
+
+# Assign function call to ticker for History
+mcd_ticker = ticker_price_action("MCD")
+pep_ticker = ticker_price_action("PEP")
+msft_ticker = ticker_price_action("MSFT")
+aapl_ticker = ticker_price_action("AAPL")
+o_ticker = ticker_price_action("O")
+
+# Call Daily function
+daily_info = ticker_info()
+
+# Export History Data to CSV
+mcd_ticker.to_csv(pwd + "\\history.csv", mode ="w", header=True, index=False)
+pep_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+
+# Export Daily Data to CSV
+daily_info.to_csv(pwd + "\\daily.csv", mode ="w", header=True, index=False)
+
+# Create CSV data frame the import into Streamlit
+df_hist = pd.read_csv(pwd + "\\history.csv")
+df_daily = pd.read_csv(pwd + "\\daily.csv")
+
+df_merged = pd.concat([df_hist, df_daily], axis=1)
+
+df_merged = df_merged[[
+            "Current_Date", "symbol", 
+            "currentPrice", "Daily_Percent_Change",
+            "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+            "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", "Week_52_Low_Avg_%", "Week_52_High_Avg_%",
+            "Previous_Date", 
+            "previousClose", "Wkly_Avg_Close", "Monthly_Avg_Close", 
+            "fiftyDayAverage", "twoHundredDayAverage", 
+            "fiftyTwoWeekLow", "fiftyTwoWeekHigh"]]
 
 # Run Streamlit
 
