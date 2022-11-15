@@ -46,7 +46,8 @@ def ticker_price_action(ticker_symbol):
                                     .head(rows_returned)
     ticker_price_action = ticker_price_action.reset_index()
 
-    ticker_price_action["Date"] = ticker_price_action["Date"].dt.date
+    # ticker_price_action["Date"] = ticker_price_action["Date"].dt.date.sort_values(ascending=False)
+
 
     return ticker_price_action
 
