@@ -35,7 +35,7 @@ def ticker_info(): # ticker_symbol
 
     # Reorder columns in df
 
-    df = df[["symbol", "Current_Date", 
+    df = df[["Current_Date", "symbol", 
             "currentPrice", "Daily_Percent_Change",
             "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", "Week_52_Low_Avg_%", "Week_52_High_Avg_%",
             "Previous_Date", 

@@ -1,5 +1,5 @@
 import streamlit as st
-from staging_data import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily
+from staging_data import mcd_df, pep_df, msft_df, aapl_df, o_df, df_daily, df_hist
 
 # Run Streamlit
 
@@ -31,34 +31,39 @@ st.dataframe(df_daily.style.applymap(percent_variance, subset=["Daily_Percent_Ch
 st.markdown("""---""")
 
 st.header("Historical Data:")
-st.subheader("McDonald's Corp")
-# st.write(mcd_df)
-st.dataframe(mcd_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+
+st.dataframe(df_hist.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
                                                              ]))
 
-st.subheader("PepsiCo, Inc.")
-# st.write(pep_df)
-st.dataframe(pep_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
+# # st.subheader("McDonald's Corp")
+# # st.write(mcd_df)
+# st.dataframe(mcd_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))
 
-st.subheader("Microsoft Corp")
-# st.write(msft_df)
-st.dataframe(msft_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
+# # st.subheader("PepsiCo, Inc.")
+# # st.write(pep_df)
+# st.dataframe(pep_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))
 
-st.subheader("Apple Inc")
-# st.write(aapl_df)
-st.dataframe(aapl_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))                                                             
+# # st.subheader("Microsoft Corp")
+# # st.write(msft_df)
+# st.dataframe(msft_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))
 
-st.subheader("Realty Income Corp")
-# st.write(o_df)
-st.dataframe(o_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
+# # st.subheader("Apple Inc")
+# # st.write(aapl_df)
+# st.dataframe(aapl_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))                                                             
+
+# # st.subheader("Realty Income Corp")
+# # st.write(o_df)
+# st.dataframe(o_df.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))
 
 # add_sidebar = st.sidebar.selectbox("Test Side Bar Title", ("Test 1", "Test 2"))
