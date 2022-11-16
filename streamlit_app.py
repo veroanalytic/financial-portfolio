@@ -34,15 +34,26 @@ df_daily = pd.read_csv(pwd + "\\daily.csv")
 
 df_merged = pd.concat([df_hist, df_daily], axis=1)
 
-df_merged = df_merged[[
-            "Current_Date", "symbol", 
-            "currentPrice", "Daily_Percent_Change",
+df_date_check = df_merged.copy()
+df_percent = df_merged.copy()
+df_dollar_price = df_merged.copy()
+
+df_date_check = df_date_check[["Symbol",  
+                               "Current_Date", "Date", "Previous_Date"]]
+
+df_dollar_price = df_dollar_price[["Symbol", "Current_Pricing",
+                    "Previous_Close_Pricing", "Wkly_Avg_Close_Pricing", "Monthly_Avg_Close_Pricing", 
+                    "Fifty_Day_Average_Pricing", "TwoHundred_Day_Avg_Pricing", 
+                    "Week_52_Low_Avg_Pricing", "Week_52_High_Avg_Pricing"]]                                       
+
+df_percent = df_percent[[
+            "Symbol", "Current_Pricing",
+            "Daily_Change_Percent",
             "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-            "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", "Week_52_Low_Avg_%", "Week_52_High_Avg_%",
-            "Previous_Date", 
-            "previousClose", "Wkly_Avg_Close", "Monthly_Avg_Close", 
-            "fiftyDayAverage", "twoHundredDayAverage", 
-            "fiftyTwoWeekLow", "fiftyTwoWeekHigh"]]
+            "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", "Week_52_Low_Avg_Percent", "Week_52_High_Avg_Percent",
+            ]]
+
+
 
 # Run Streamlit
 
@@ -60,6 +71,15 @@ def percent_variance(val):
     # color = "#FF6A6A" if val < 0 else "green" # if val > 0 else "green"
     return f"background-color: {color}"
 
+# Revisit here for Conditional formatting to price values
+# def price_variance(val):
+#     if val < df_dollar_price:
+#         color = "FF6A6A"
+#     elif val > df_dollar_price:
+#         color = "#3CB371"
+
+#     return f"background-color: {color}"
+
 
 st.set_page_config(layout="wide")
 st.title("Weekly DCA Assessment")
@@ -68,17 +88,23 @@ st.markdown("""---""")
 
 st.header("Daily Data:")
 # st.write(df_daily)
-st.dataframe(df_merged.style.applymap(percent_variance, subset=["Daily_Percent_Change", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                                "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", 
-                                                                "Week_52_Low_Avg_%", "Week_52_High_Avg_%"]))
+st.dataframe(df_date_check)
+
+st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+                                                                "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
+                                                                "Week_52_Low_Avg_Percent", "Week_52_High_Avg_Percent"]))
+
+st.dataframe(df_dollar_price)
+
+
 
 st.markdown("""---""")
 
-st.header("Historical Data:")
+# st.header("Historical Data:")
 
-st.dataframe(df_hist.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-                                                             "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
-                                                             ]))
+# st.dataframe(df_hist.style.applymap(percent_variance, subset=["Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+#                                                              "Semi_Annual_Avg_Close_Percent", "Annual_Avg_Close_Percent", "Two_Year_Avg_Close_Percent"
+#                                                              ]))
 
 # # st.subheader("McDonald's Corp")
 # # st.write(mcd_df)

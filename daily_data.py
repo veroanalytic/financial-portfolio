@@ -19,28 +19,29 @@ def ticker_info(): # ticker_symbol
     df["Previous_Date"] = datetime.datetime.today() - BDay(1)
 
     # Create derived columns
-    df["Daily_Percent_Change"] = (df["currentPrice"] - df["previousClose"]) / df["currentPrice"] * 100
-    df["Fifty_Day_Avg_%"] = (df["currentPrice"] - df["fiftyDayAverage"]) / df["currentPrice"] * 100
-    df["TwoHundred_Day_Avg_%"] = (df["currentPrice"] - df["twoHundredDayAverage"]) / df["currentPrice"] * 100
-    df["Week_52_Low_Avg_%"] = (df["currentPrice"] - df["fiftyTwoWeekLow"]) / df["currentPrice"] * 100
-    df["Week_52_High_Avg_%"] = (df["currentPrice"] - df["fiftyTwoWeekHigh"]) / df["currentPrice"] * 100
+    df["Symbol"] = df["symbol"]
+    df["Daily_Change_Percent"] = (df["currentPrice"] - df["previousClose"]) / df["currentPrice"] * 100
+    df["Fifty_Day_Avg_Percent"] = (df["currentPrice"] - df["fiftyDayAverage"]) / df["currentPrice"] * 100
+    df["TwoHundred_Day_Avg_Percent"] = (df["currentPrice"] - df["twoHundredDayAverage"]) / df["currentPrice"] * 100
+    df["Week_52_Low_Avg_Percent"] = (df["currentPrice"] - df["fiftyTwoWeekLow"]) / df["currentPrice"] * 100
+    df["Week_52_High_Avg_Percent"] = (df["currentPrice"] - df["fiftyTwoWeekHigh"]) / df["currentPrice"] * 100
 
     # Adding percent or dollar symbols
-    df["currentPrice"] = df["currentPrice"].map("${:,.2f}".format)
-    df["previousClose"] = df["previousClose"].map("${:,.2f}".format)
-    df["fiftyDayAverage"] = df["fiftyDayAverage"].map("${:,.2f}".format)
-    df["twoHundredDayAverage"] = df["twoHundredDayAverage"].map("${:,.2f}".format)
-    df["fiftyTwoWeekLow"] = df["fiftyTwoWeekLow"].map("${:,.2f}".format)
-    df["fiftyTwoWeekHigh"] = df["fiftyTwoWeekHigh"].map("${:,.2f}".format)
+    df["Current_Pricing"] = df["currentPrice"].map("${:,.2f}".format)
+    df["Previous_Close_Pricing"] = df["previousClose"].map("${:,.2f}".format)
+    df["Fifty_Day_Average_Pricing"] = df["fiftyDayAverage"].map("${:,.2f}".format)
+    df["TwoHundred_Day_Avg_Pricing"] = df["twoHundredDayAverage"].map("${:,.2f}".format)
+    df["Week_52_Low_Avg_Pricing"] = df["fiftyTwoWeekLow"].map("${:,.2f}".format)
+    df["Week_52_High_Avg_Pricing"] = df["fiftyTwoWeekHigh"].map("${:,.2f}".format)
 
     # Reorder columns in df
 
-    df = df[["Current_Date", "symbol", 
-            "currentPrice", "Daily_Percent_Change",
-            "Fifty_Day_Avg_%", "TwoHundred_Day_Avg_%", "Week_52_Low_Avg_%", "Week_52_High_Avg_%",
+    df = df[["Current_Date", "Symbol", 
+            "Current_Pricing", "Daily_Change_Percent",
+            "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", "Week_52_Low_Avg_Percent", "Week_52_High_Avg_Percent",
             "Previous_Date", 
-            "previousClose", "fiftyDayAverage", "twoHundredDayAverage", 
-            "fiftyTwoWeekLow", "fiftyTwoWeekHigh"
+            "Previous_Close_Pricing", "Fifty_Day_Average_Pricing", "TwoHundred_Day_Avg_Pricing", 
+            "Week_52_Low_Avg_Pricing", "Week_52_High_Avg_Pricing"
 
     ]]
 
