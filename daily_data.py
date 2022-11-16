@@ -18,7 +18,7 @@ def ticker_info(): # ticker_symbol
     df["Current_Date"] = datetime.datetime.today() - BDay(0)
     df["Previous_Date"] = datetime.datetime.today() - BDay(1)
     df["Last_Dividend_Date"] = df["lastDividendDate"]
-#     df["Last_Dividend_Date"] = pd.to_datetime(df["lastDividendDate"], units="m")
+#     df["Last_Dividend_Date"] = pd.to_datetime(df["lastDividendDate"])
 
     # Create derived columns / rename columns
     df["Symbol"] = df["symbol"]
