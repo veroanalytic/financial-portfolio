@@ -50,11 +50,5 @@ def ticker_price_action(ticker_symbol):
             .head(rows_returned)
     df = df.reset_index()
 
-     # Adding percent or dollar symbols
-    
-
-    # df["Date"] = df["Date"].dt.date.sort_values(ascending=False)
-
-
     return df
 

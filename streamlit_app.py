@@ -14,6 +14,9 @@ pep_ticker = ticker_price_action("PEP")
 msft_ticker = ticker_price_action("MSFT")
 aapl_ticker = ticker_price_action("AAPL")
 o_ticker = ticker_price_action("O")
+pg_ticker = ticker_price_action("PG")
+jnj_ticker = ticker_price_action("JNJ")
+# abbv_ticker = ticker_price_action("ABBV")
 
 # Call Daily function
 daily_info = ticker_info()
@@ -24,6 +27,9 @@ pep_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+pg_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+jnj_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+# abbv_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 
 # Export Daily Data to CSV
 daily_info.to_csv(pwd + "\\daily.csv", mode ="w", header=True, index=False)
@@ -38,19 +44,19 @@ df_date_check = df_merged.copy()
 df_percent = df_merged.copy()
 df_dollar_price = df_merged.copy()
 
-df_date_check = df_date_check[["Symbol",  
-                               "Current_Date", "Date", "Previous_Date"]]
+df_date_check = df_date_check[["Symbol", "Company", "Industry", "Dividend_Yield", "Payout_Ratio",
+                               "Current_Date", "Date", "Previous_Date", "Last_Dividend_Date",]]
 
 df_dollar_price = df_dollar_price[["Symbol", "Current_Pricing",
                     "Previous_Close_Pricing", "Wkly_Avg_Close_Pricing", "Monthly_Avg_Close_Pricing", 
                     "Fifty_Day_Average_Pricing", "TwoHundred_Day_Avg_Pricing", 
-                    "Week_52_Low_Avg_Pricing", "Week_52_High_Avg_Pricing"]]                                       
+                    "Week_52_Low_Pricing", "Week_52_High_Pricing"]]                                       
 
 df_percent = df_percent[[
             "Symbol", "Current_Pricing",
             "Daily_Change_Percent",
             "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-            "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", "Week_52_Low_Avg_Percent", "Week_52_High_Avg_Percent",
+            "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", "Week_52_Low_Percent", "Week_52_High_Percent",
             ]]
 
 
@@ -86,14 +92,17 @@ st.title("Weekly DCA Assessment")
 
 st.markdown("""---""")
 
-st.header("Daily Data:")
+st.header("Daily Data")
 # st.write(df_daily)
+
+st.subheader("Company Info:")
 st.dataframe(df_date_check)
 
+st.subheader("Percent Difference:")
 st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
                                                                 "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
-                                                                "Week_52_Low_Avg_Percent", "Week_52_High_Avg_Percent"]))
-
+                                                                "Week_52_Low_Percent", "Week_52_High_Percent"]))
+st.subheader("Pricing:")
 st.dataframe(df_dollar_price)
 
 
