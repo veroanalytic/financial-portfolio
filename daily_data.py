@@ -6,7 +6,7 @@ from pandas.tseries.offsets import BDay
 
 def ticker_info(): # ticker_symbol
 
-    l = ["MCD", "PEP", "MSFT", "AAPL", "O", "PG", "JNJ"]
+    l = ["MCD", "PEP", "MSFT", "AAPL", "O"]
 
     df_list = []
 

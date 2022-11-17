@@ -27,8 +27,8 @@ pep_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
-pg_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
-jnj_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+# pg_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+# jnj_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 # abbv_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 
 # Export Daily Data to CSV
