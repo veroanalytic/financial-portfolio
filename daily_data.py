@@ -26,6 +26,9 @@ def ticker_info(): # ticker_symbol
     df["Industry"] = df["industry"]
     df["Payout_Ratio"]= df["payoutRatio"]
     df["Dividend_Yield"] = df["dividendYield"] * 100
+    df = df.rename(columns={"pegRatio": "PEG_Ratio"})
+    df = df.rename(columns={"trailingPE": "Trailing_PE"})
+    df = df.rename(columns={"forwardPE": "Forward_PE"})
     
     df["Daily_Change_Percent"] = (df["currentPrice"] - df["previousClose"]) / df["currentPrice"] * 100
     df["Fifty_Day_Avg_Percent"] = (df["currentPrice"] - df["fiftyDayAverage"]) / df["currentPrice"] * 100

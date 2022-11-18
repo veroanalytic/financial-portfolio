@@ -44,8 +44,9 @@ df_date_check = df_merged.copy()
 df_percent = df_merged.copy()
 df_dollar_price = df_merged.copy()
 
-df_date_check = df_date_check[["Symbol", "Company", "Industry", "Dividend_Yield", "Payout_Ratio",
-                               "Current_Date", "Date", "Previous_Date", "Last_Dividend_Date",]]
+df_date_check = df_date_check[["Symbol", "Company", "Industry", "Trailing_PE", "Forward_PE",
+                               "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
+                               "Current_Date", "Date", "Previous_Date", "Last_Dividend_Date"]]
 
 df_dollar_price = df_dollar_price[["Symbol", "Current_Pricing",
                     "Previous_Close_Pricing", "Wkly_Avg_Close_Pricing", "Monthly_Avg_Close_Pricing", 
