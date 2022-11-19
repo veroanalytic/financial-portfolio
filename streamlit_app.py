@@ -14,8 +14,9 @@ pep_ticker = ticker_price_action("PEP")
 msft_ticker = ticker_price_action("MSFT")
 aapl_ticker = ticker_price_action("AAPL")
 o_ticker = ticker_price_action("O")
-pg_ticker = ticker_price_action("PG")
-jnj_ticker = ticker_price_action("JNJ")
+ko_ticker = ticker_price_action("KO")
+# pg_ticker = ticker_price_action("PG")
+# # jnj_ticker = ticker_price_action("JNJ")
 # abbv_ticker = ticker_price_action("ABBV")
 
 # Call Daily function
@@ -27,6 +28,7 @@ pep_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+ko_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 # pg_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 # jnj_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 # abbv_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
@@ -44,7 +46,7 @@ df_date_check = df_merged.copy()
 df_percent = df_merged.copy()
 df_dollar_price = df_merged.copy()
 
-df_date_check = df_date_check[["Symbol", "Company", "Industry", "Trailing_PE", "Forward_PE",
+df_date_check = df_date_check[["Symbol", "Company", "Sector", "Industry", "Trailing_PE", "Forward_PE",
                                "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
                                "Current_Date", "Date", "Previous_Date", "Last_Dividend_Date"]]
 
