@@ -2,15 +2,16 @@ import pandas as pd
 import yfinance as yf
 import datetime 
 from pandas.tseries.offsets import BDay
+from aristocrats import div_aristocrats
 
 
 def ticker_info(): # ticker_symbol
 
-    l = ["MCD", "PEP", "MSFT", "AAPL", "O", "KO"]
-
+    watchlist = ["MCD", "PEP", "MSFT", "AAPL", "O"]
+    
     df_list = []
 
-    for t in l:
+    for t in watchlist:
         df_list.append(pd.DataFrame([yf.Ticker(t).info]))
     
     df = pd.concat(df_list)
