@@ -45,6 +45,7 @@ df_merged = pd.concat([df_hist, df_daily], axis=1)
 df_date_check = df_merged.copy()
 df_percent = df_merged.copy()
 df_dollar_price = df_merged.copy()
+df_low_median_high = df_merged.copy()
 
 df_date_check = df_date_check[["Symbol", "Company", "Sector", "Industry", "Trailing_PE", "Forward_PE",
                                "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
@@ -60,6 +61,11 @@ df_percent = df_percent[[
             "Daily_Change_Percent",
             "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
             "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", "Week_52_Low_Percent", "Week_52_High_Percent",
+            ]]
+
+df_low_median_high = df_low_median_high[[
+            "Symbol", "Current_Pricing",
+            "Target_Low_Price", "Target_Median_Price", "Target_High_Price"
             ]]
 
 
@@ -108,6 +114,9 @@ st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_P
 st.subheader("Pricing:")
 st.dataframe(df_dollar_price)
 
+
+st.subheader("Targets:")
+st.dataframe(df_low_median_high)
 
 
 st.markdown("""---""")

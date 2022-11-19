@@ -15,18 +15,7 @@ def ticker_info(): # ticker_symbol
     
     df = pd.concat(df_list)
 
-    df["Current_Date"] = datetime.datetime.today() - BDay(0)
-    df["Previous_Date"] = datetime.datetime.today() - BDay(1)
-
-    # Create derived columns 
-    df["Dividend_Yield"] = df["dividendYield"] * 100
-    df["Daily_Change_Percent"] = (df["currentPrice"] - df["previousClose"]) / df["currentPrice"] * 100
-    df["Fifty_Day_Avg_Percent"] = (df["currentPrice"] - df["fiftyDayAverage"]) / df["currentPrice"] * 100
-    df["TwoHundred_Day_Avg_Percent"] = (df["currentPrice"] - df["twoHundredDayAverage"]) / df["currentPrice"] * 100
-    df["Week_52_Low_Percent"] = (df["currentPrice"] - df["fiftyTwoWeekLow"]) / df["currentPrice"] * 100
-    df["Week_52_High_Percent"] = (df["currentPrice"] - df["fiftyTwoWeekHigh"]) / df["currentPrice"] * 100
-
-    # Rename columns
+      # Rename columns
     df = df.rename(columns={
                             "symbol": "Symbol",
                             "shortName": "Company", 
@@ -37,15 +26,49 @@ def ticker_info(): # ticker_symbol
                             "forwardPE": "Forward_PE",
                             "sector": "Sector",
                             "lastDividendDate": "Last_Dividend_Date",
-                            "currentPrice": "Current_Pricing"
+                            "currentPrice": "Current_Pricing",
+                            "targetLowPrice": "Target_Low_Price",
+                            "targetMedianPrice": "Target_Median_Price",
+                            "targetHighPrice": "Target_High_Price"
                             })
 
+
+    df["Current_Date"] = datetime.datetime.today() - BDay(0)
+    df["Previous_Date"] = datetime.datetime.today() - BDay(1)
+
+    # Create derived columns 
+    df["Dividend_Yield"] = df["dividendYield"] * 100
+    df["Daily_Change_Percent"] = (df["Current_Pricing"] - df["previousClose"]) / df["Current_Pricing"] * 100
+    df["Fifty_Day_Avg_Percent"] = (df["Current_Pricing"] - df["fiftyDayAverage"]) / df["Current_Pricing"] * 100
+    df["TwoHundred_Day_Avg_Percent"] = (df["Current_Pricing"] - df["twoHundredDayAverage"]) / df["Current_Pricing"] * 100
+    df["Week_52_Low_Percent"] = (df["Current_Pricing"] - df["fiftyTwoWeekLow"]) / df["Current_Pricing"] * 100
+    df["Week_52_High_Percent"] = (df["Current_Pricing"] - df["fiftyTwoWeekHigh"]) / df["Current_Pricing"] * 100
+
+  
+
     # Adding percent or dollar symbols
-    df["Current_Pricing"] = df["currentPrice"].map("${:,.2f}".format)
+    df["Current_Pricing"] = df["Current_Pricing"].map("${:,.2f}".format)
     df["Previous_Close_Pricing"] = df["previousClose"].map("${:,.2f}".format)
     df["Fifty_Day_Average_Pricing"] = df["fiftyDayAverage"].map("${:,.2f}".format)
     df["TwoHundred_Day_Avg_Pricing"] = df["twoHundredDayAverage"].map("${:,.2f}".format)
     df["Week_52_Low_Pricing"] = df["fiftyTwoWeekLow"].map("${:,.2f}".format)
     df["Week_52_High_Pricing"] = df["fiftyTwoWeekHigh"].map("${:,.2f}".format)
+    df["Target_Low_Price"] = df["Target_Low_Price"].map("${:,.2f}".format)
+    df["Target_Median_Price"] = df["Target_Median_Price"].map("${:,.2f}".format)
+    df["Target_High_Price"] = df["Target_High_Price"].map("${:,.2f}".format)
+
+
+    df = df[["Symbol", "Company", "Sector", "Industry", "Trailing_PE", "Forward_PE",
+             "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
+             "Current_Date", "Previous_Date", "Last_Dividend_Date",
+             "Current_Pricing", "Previous_Close_Pricing", 
+             "Fifty_Day_Average_Pricing", "TwoHundred_Day_Avg_Pricing", 
+             "Week_52_Low_Pricing", "Week_52_High_Pricing", 
+             "Daily_Change_Percent", "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
+             "Week_52_Low_Percent", "Week_52_High_Percent",
+             "Target_Low_Price", "Target_Median_Price", "Target_High_Price"
+
+
+    ]]
 
     return df
