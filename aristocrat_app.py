@@ -29,7 +29,7 @@ grid_response = AgGrid(
     gridOptions=gridOptions,
     update_mode=GridUpdateMode.MODEL_CHANGED,
     data_return_mode=DataReturnMode.FILTERED_AND_SORTED,
-    fit_columns_on_grid_load=True,
+    fit_columns_on_grid_load=False,
     enable_enterprise_modules=True,
     height=300,
     width="100%",
@@ -46,4 +46,4 @@ if selected:
     dfs = pd.DataFrame(selected)
     dfs = dfs.drop(["_selectedRowNodeInfo", "Current_Date", "Previous_Date"], axis=1)
 
-    AgGrid(dfs, fit_columns_on_grid_load=True)
+    AgGrid(dfs, fit_columns_on_grid_load=False)

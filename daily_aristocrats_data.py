@@ -41,14 +41,24 @@ def ticker_info(): # ticker_symbol
 
 
     # Create derived columns 
-    df["Dividend_Yield"] = df["dividendYield"] * 100
+    df["Dividend_Yield"] = round(df["dividendYield"] * 100, 2)
+    df["Payout_Ratio"] = round(df["Payout_Ratio"], 2)
+    df["PEG_Ratio"] = round(df["PEG_Ratio"], 2)
+    df["Trailing_PE"] = round(df["Trailing_PE"], 2)
+    df["Forward_PE"] = round(df["Forward_PE"], 2)
+    df["PEG_Ratio"] = round(df["PEG_Ratio"], 2)
+    df["Current_Pricing"] = round(df["Current_Pricing"], 2)
+    df["Week_52_Low_Pricing"] = round(df["Week_52_Low_Pricing"], 2)
+    df["Week_52_High_Pricing"] = round(df["Week_52_High_Pricing"], 2)
+    df["Fifty_Day_Average_Pricing"] = round(df["Fifty_Day_Average_Pricing"], 2)
+    df["TwoHundred_Day_Avg_Pricing"] = round(df["TwoHundred_Day_Avg_Pricing"], 2)
 
 
 
     df = df[["Symbol", "Company", "Sector", "Industry", 
              "Current_Pricing", "Trailing_PE", "Forward_PE",
              "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
-             "Target_Low_Price", "Target_Median_Price", "Target_High_Price",
+            #  "Target_Low_Price", "Target_Median_Price", "Target_High_Price",
              "Week_52_Low_Pricing", "Week_52_High_Pricing", "Fifty_Day_Average_Pricing", "TwoHundred_Day_Avg_Pricing",
              "Current_Date", "Previous_Date",
              ]]
