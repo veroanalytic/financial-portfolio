@@ -2,7 +2,6 @@ import pandas as pd
 import yfinance as yf
 import datetime 
 from pandas.tseries.offsets import BDay
-from aristocrats import div_aristocrats
 
 
 def ticker_info(): # ticker_symbol
@@ -30,7 +29,11 @@ def ticker_info(): # ticker_symbol
                             "currentPrice": "Current_Pricing",
                             "targetLowPrice": "Target_Low_Price",
                             "targetMedianPrice": "Target_Median_Price",
-                            "targetHighPrice": "Target_High_Price"
+                            "targetHighPrice": "Target_High_Price",
+                            "fiftyTwoWeekLow":  "Week_52_Low_Pricing",
+                            "fiftyTwoWeekHigh": "Week_52_High_Pricing",
+                            "fiftyDayAverage": "Fifty_Day_Average_Pricing",
+                            "twoHundredDayAverage": "TwoHundred_Day_Avg_Pricing"
                             })
 
 
@@ -50,10 +53,10 @@ def ticker_info(): # ticker_symbol
     # Adding percent or dollar symbols
     df["Current_Pricing"] = df["Current_Pricing"].map("${:,.2f}".format)
     df["Previous_Close_Pricing"] = df["previousClose"].map("${:,.2f}".format)
-    df["Fifty_Day_Average_Pricing"] = df["fiftyDayAverage"].map("${:,.2f}".format)
-    df["TwoHundred_Day_Avg_Pricing"] = df["twoHundredDayAverage"].map("${:,.2f}".format)
-    df["Week_52_Low_Pricing"] = df["fiftyTwoWeekLow"].map("${:,.2f}".format)
-    df["Week_52_High_Pricing"] = df["fiftyTwoWeekHigh"].map("${:,.2f}".format)
+    df["Fifty_Day_Average_Pricing"] = df["Fifty_Day_Average_Pricing"].map("${:,.2f}".format)
+    df["TwoHundred_Day_Avg_Pricing"] = df["TwoHundred_Day_Avg_Pricing"].map("${:,.2f}".format)
+    df["Week_52_Low_Pricing"] = df["Week_52_Low_Pricing"].map("${:,.2f}".format)
+    df["Week_52_High_Pricing"] = df["Week_52_High_Pricing"].map("${:,.2f}".format)
     df["Target_Low_Price"] = df["Target_Low_Price"].map("${:,.2f}".format)
     df["Target_Median_Price"] = df["Target_Median_Price"].map("${:,.2f}".format)
     df["Target_High_Price"] = df["Target_High_Price"].map("${:,.2f}".format)
