@@ -2,7 +2,7 @@ import pandas as pd
 import yfinance as yf
 import datetime 
 from pandas.tseries.offsets import BDay
-from aristocrats_list import div_aristocrats
+from overall_stocks_list import stocks_analysis
 import os
 
 
@@ -10,7 +10,7 @@ def ticker_info(): # ticker_symbol
 
     df_list = []
 
-    for t in div_aristocrats:
+    for t in stocks_analysis:
         df_list.append(pd.DataFrame([yf.Ticker(t).info]))
     
     df = pd.concat(df_list)
@@ -72,7 +72,7 @@ daily_info = ticker_info()
 
 
 # Export Daily Data to CSV
-daily_info.to_csv(pwd + "\\daily_aristocrat.csv", mode ="w", header=True, index=False)
+daily_info.to_csv(pwd + "\\stocks_analysis.csv", mode ="w", header=True, index=False)
 
 
 # Create CSV data frame the import into Streamlit

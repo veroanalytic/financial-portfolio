@@ -1,5 +1,6 @@
 div_aristocrats = [
-  "ABBV"
+  "AAPL"
+, "ABBV"
 , "ABT"
 , "ADM"
 , "ADP"
@@ -43,6 +44,7 @@ div_aristocrats = [
 , "MDT"
 , "MKC"
 , "MMM"
+, "MSFT"
 , "NEE"
 , "NEE"
 , "NUE"
