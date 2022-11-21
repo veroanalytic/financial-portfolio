@@ -2,10 +2,20 @@ import streamlit as st
 import pandas as pd
 import os
 from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
+# from stocks_analysis_data import ticker_info
 
 
 
 pwd = os.getcwd()
+
+# Call Daily function
+daily_info = ticker_info()
+
+
+# Export Daily Data to CSV
+daily_info.to_csv(pwd + "\\stocks_analysis.csv", mode ="w", header=True, index=False)
+
+
 df_sl = pd.read_csv(pwd + "\\stocks_analysis.csv")
 
 
