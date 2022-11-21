@@ -6,7 +6,7 @@ from pandas.tseries.offsets import BDay
 
 def ticker_info(): # ticker_symbol
 
-    watchlist = ["MCD", "PEP", "MSFT", "AAPL", "O"]
+    watchlist = ["PEP", "MSFT", "AAPL", "O", "JNJ", "PG"]
     
     df_list = []
 
@@ -43,10 +43,10 @@ def ticker_info(): # ticker_symbol
     # Create derived columns 
     df["Dividend_Yield"] = df["dividendYield"] * 100
     df["Daily_Change_Percent"] = (df["Current_Pricing"] - df["previousClose"]) / df["Current_Pricing"] * 100
-    df["Fifty_Day_Avg_Percent"] = (df["Current_Pricing"] - df["fiftyDayAverage"]) / df["Current_Pricing"] * 100
-    df["TwoHundred_Day_Avg_Percent"] = (df["Current_Pricing"] - df["twoHundredDayAverage"]) / df["Current_Pricing"] * 100
-    df["Week_52_Low_Percent"] = (df["Current_Pricing"] - df["fiftyTwoWeekLow"]) / df["Current_Pricing"] * 100
-    df["Week_52_High_Percent"] = (df["Current_Pricing"] - df["fiftyTwoWeekHigh"]) / df["Current_Pricing"] * 100
+    df["Fifty_Day_Avg_Percent"] = (df["Current_Pricing"] - df["Fifty_Day_Average_Pricing"]) / df["Current_Pricing"] * 100
+    df["TwoHundred_Day_Avg_Percent"] = (df["Current_Pricing"] - df["TwoHundred_Day_Avg_Pricing"]) / df["Current_Pricing"] * 100
+    df["Week_52_Low_Percent"] = (df["Current_Pricing"] - df["Week_52_Low_Pricing"]) / df["Current_Pricing"] * 100
+    df["Week_52_High_Percent"] = (df["Current_Pricing"] - df["Week_52_High_Pricing"]) / df["Current_Pricing"] * 100
 
   
 

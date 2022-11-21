@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from history_data import ticker_price_action
-from daily_data import ticker_info
+from daily_watchlist_data import ticker_info
 import os
 
 pwd = os.getcwd()
@@ -13,6 +13,8 @@ pep_ticker = ticker_price_action("PEP")
 msft_ticker = ticker_price_action("MSFT")
 aapl_ticker = ticker_price_action("AAPL")
 o_ticker = ticker_price_action("O")
+pg_ticker = ticker_price_action("PG")
+jnj_ticker = ticker_price_action("JNJ")
 
 
 
@@ -25,6 +27,8 @@ pep_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+pg_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
+jnj_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 
 
 
