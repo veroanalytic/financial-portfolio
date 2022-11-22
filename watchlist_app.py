@@ -21,7 +21,7 @@ jnj_ticker = ticker_price_action("JNJ")
 daily_info = ticker_info()
 
 # Export History Data to CSV
-pep_ticker.to_csv(pwd + "\\history.csv", mode ="w", header=False, index=False)
+pep_ticker.to_csv(pwd + "\\history.csv", mode ="w", header=True, index=False)
 msft_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 aapl_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
 o_ticker.to_csv(pwd + "\\history.csv", mode ="a", header=False, index=False)
@@ -46,7 +46,7 @@ df_low_median_high = df_merged.copy()
 
 df_date_check = df_date_check[["Symbol", "Company", "Sector", "Industry", "Trailing_PE", "Forward_PE",
                                "Dividend_Yield", "Payout_Ratio", "PEG_Ratio",
-                               "Current_Date", "Date", "Previous_Date", "Last_Dividend_Date"]]
+                               "Current_Date", "Date", "Previous_Date"]] 
 
 df_dollar_price = df_dollar_price[["Symbol", "Current_Pricing",
                     "Previous_Close_Pricing", "Wkly_Avg_Close_Pricing", "Monthly_Avg_Close_Pricing", 
@@ -70,18 +70,18 @@ df_low_median_high = df_low_median_high[[
 # Run Streamlit
 
 # Streamlit conditional function
-# def percent_variance(val):
-#     if val < -10:
-#         color = "red"
-#     elif val < 0:
-#         color = "#FF6A6A"
-#     elif val > 10:
-#         color = "#00CD00"
-#     elif val > 0:
-#         color = "#3CB371"
+def percent_variance(val):
+    if val < -10:
+        color = "red"
+    elif val < 0:
+        color = "#FF6A6A"
+    elif val > 10:
+        color = "#00CD00"
+    elif val > 0:
+        color = "#3CB371"
 
-#     # color = "#FF6A6A" if val < 0 else "green" # if val > 0 else "green"
-#     return f"background-color: {color}"
+    # color = "#FF6A6A" if val < 0 else "green" # if val > 0 else "green"
+    return f"background-color: {color}"
 
 
 st.set_page_config(layout="wide")
@@ -96,10 +96,10 @@ st.subheader("Company Info:")
 st.dataframe(df_date_check)
 
 st.subheader("Percent Difference:")
-st.dataframe(df_percent)
-# st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-#                                                                 "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
-#                                                                 "Week_52_Low_Percent", "Week_52_High_Percent"]))
+# st.dataframe(df_percent)
+st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+                                                                "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
+                                                                "Week_52_Low_Percent", "Week_52_High_Percent"]))
 
 st.subheader("Pricing:")
 st.dataframe(df_dollar_price)
