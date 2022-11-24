@@ -97,9 +97,9 @@ st.dataframe(df_date_check)
 
 st.subheader("Percent Difference:")
 st.dataframe(df_percent)
-# st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
-#                                                                 "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
-#                                                                 "Week_52_Low_Percent", "Week_52_High_Percent"]))
+st.dataframe(df_percent.style.applymap(percent_variance, subset=["Daily_Change_Percent", "Wkly_Avg_Close_Percent", "Monthly_Avg_Close_Percent",
+                                                                "Fifty_Day_Avg_Percent", "TwoHundred_Day_Avg_Percent", 
+                                                                "Week_52_Low_Percent", "Week_52_High_Percent"]))
 
 st.subheader("Pricing:")
 st.dataframe(df_dollar_price)
